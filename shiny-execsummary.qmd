@@ -1,0 +1,67 @@
+---
+title: "Exec Summary - Mental Health in Undergrads"
+author: "SIDA"
+format: pdf
+editor: visual
+---
+
+```{r}
+#| include: false
+
+library(kableExtra)
+```
+
+```{=html}
+<!--
+Change the title to "Executive Summary for YOUR PROJECT TITLE", 
+and update the author field with your group name
+-->
+```
+
+## Insights into Topic
+
+<!-- What is your topic? Why was it interesting to you? What motivated it for you? -->
+
+The topic of our ShinyApp is mental health in US undergraduate students. Initially, our motivating question was "how does the amount of credit hours affect mental health in students?" Many colleges have 3-credit hour courses while some colleges have 4-credit hour courses, and the number of classes taken will differ depending on how many credit hours each course is worth. We were interested in exploring whether that will have an effect on student's mental health. We were not able to find a dataset that contained information on different college's credit hours but came across a data set that allows us to explore adjacent questions related to student's mental health and academic adjustment.
+
+## Data
+
+<!-- Describe your data. Where did it come from? What are some of the variables? You may not have room to describe ALL the variables. Give a reference for someone to look at - maybe this information is in your app in an information tab! -->
+
+<!-- Note: Your data sources must be listed in your integrity page (full citations) as well as within your wrangling files and listed in the app. However, you don't have to take up space here for those citations, because you are putting them in the integrity page. So be sure they are there! -->
+
+Our data came from the Healthy Minds Network surveys conducted on mental health of US college students from 2007 - 2025. We primarily focused on undergraduates that were pursuing Associate's or Bachelor's degrees, in particular their academic adjustment and whether they were impacted by anxiety/depression.
+
+We used adjust_aca_1, which was a score indicating how difficult a student found it to adjust to the academic demands of their school. We created an indicator variable, adjust_easy, using adjust_aca_1 where a "1" would represent that the student found it easy to adjust to the academic demands (adjust_aca_1 values 1-3) and "0" if it was difficult (adjust_aca_1 values 4-6). And we allow users to specify degree type, specifically the highest degree pursued by students.
+
+We also used anx_score and deprawsc, which indicate the frequency a student experienced various symptons of anxiety/depression in the last two weeks (as of response to the survey), and dx_anx and dx_dep, which indicate whether the student was diagnosed with anxiety/depression.
+
+More information about the variables involved in our plots can be found under the "More" -\> "About our data" tab in our ShinyApp.
+
+## Shiny App
+
+<!-- What does your app allow someone to do with the data? What visuals are included and why? This is a high level discussion, not details about why you used certain visual cues or choose a certain color scheme. -->
+
+<!-- At least one image of the app is required to demonstrate its functionality. This can be in this section or the next, as you deem appropriate. Remember that figures can be resized. -->
+
+At <https://69a3lt-miranda-yang.shinyapps.io/Mental_Health_of_Undergrad_Students/>, our ShinyApp explores how anxiety/depression and academic adjustment relate.
+
+Plot 1 displays the average academic adjustment for all students with each anxiety/depression symptom score (anx_score and deprawsc) as a point. Users can choose to show data for anxiety or depression and associate's, bachelor's, or all undergraduate degrees together.
+
+Plot 2 is a bar graph with the percentage of students diagnosed with anxiety/depression or who adjust more easily per year, according to user input. Users can also select what years to display and whether to show data for associate's or bachelor's degrees (or both side by side).
+
+Plot 3 is a interactive map where users could see the trend of proportion of anxiety/depression diagnosis and ease of adjustment across different regions and years. When users click on a region, they can see a popup of the exact proportion value of the variable they select (ease of academic adjustment, depression, or anxiety).
+
+![Image of the three main panels of our ShinyApp](ShinyImage.png){width="900px," height="300px"}
+
+## Results
+
+<!-- What did you learn in regards to your topic of interest? -->
+
+<!-- Remember: This executive summary must be at most 2 pages long. Presenting information concisely is also a great skill for data scientists to have. The compiled .pdf of the executive summary should be submitted in your group repo for the project. -->
+
+For plot 1, with students of any degree type, difficulty adjusting increases with anxiety and depression symptoms. This makes sense to us, as sufficient academic difficulty can exacerbate anxiety and depression, and anxiety and depression can make academic life harder.
+
+For plot 2, for undergraduate students of any degree type, the proportion of reported diagnosed anxiety and depression has increased from 2007 to 2025. However, the proportion of those reporting an easy academic adjustment has remained steady. We speculate that this is the result of mental health diagnosing becoming more common and less stigmatized.
+
+For plot 3, how positively or negatively the proportion of students who have an easy time adjusting correlates with anxiety or depression diagnosis varies by region and by year, so it is difficult to establish a relationship. On the other hand, the proportions of students in a region with anxiety and depression diagnoses correlate strongly. As an example, depression and anxiety increase in the west mountain region over time, and ease of adjustment varies. Regions also tend to have higher or lower anxiety and depression at the same time nationwide.
